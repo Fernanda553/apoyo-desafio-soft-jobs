@@ -3,6 +3,4 @@ const forRoutes = (req, res, next) => {
   next()
 }
 
-module.exports = {
-  forRoutes
-}
+export default forRoutes

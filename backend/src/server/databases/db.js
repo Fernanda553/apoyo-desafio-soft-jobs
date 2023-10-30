@@ -1,5 +1,7 @@
-require('dotenv').config()
-const { Pool } = require('pg')
+import 'dotenv/config'
+import pkg from 'pg'
+
+const { Pool } = pkg
 
 const config = {
   user: process.env.PG_USER,
@@ -15,6 +17,9 @@ const pool = new Pool(config)
 const genericSqlQuery = (query, values) => pool
   .query(query, values)
   .then(({ rows }) => rows)
-  .catch(({ code, message }) => ({ code, message }))
+  .catch(({ code, message }) => {
+    const error = { status: '[ERROR]', code, message }
+    throw error
+  })
 
-module.exports = genericSqlQuery
+export default genericSqlQuery

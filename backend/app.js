@@ -1,1 +1,1 @@
-require('./src/server/index')
+import './src/server/index.js'

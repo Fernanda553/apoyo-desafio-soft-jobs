@@ -1,8 +1,8 @@
-const { jwtVerify } = require('../../utils/jwt')
+import jwtVerify from '../../utils/jwt.js'
 
 const verifyToken = (req, res, next) => {
   const authorizationHeader = req.headers.authorization
-  if (authorizationHeader) {
+  if (!authorizationHeader) {
     return res.status(401).json({
       code: 401,
       message: 'Token no proporcionado'
@@ -25,4 +25,4 @@ const verifyToken = (req, res, next) => {
   }
 }
 
-module.exports = verifyToken
+export default verifyToken
