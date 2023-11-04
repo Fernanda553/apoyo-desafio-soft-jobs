@@ -1,6 +1,6 @@
-import jwtVerify from '../../utils/jwt.js'
+import { jwtVerify } from '../../utils/jwt.js'
 
-const verifyToken = (req, res, next) => {
+export const verifyToken = (req, res, next) => {
   const authorizationHeader = req.headers.authorization
   if (!authorizationHeader) {
     return res.status(401).json({

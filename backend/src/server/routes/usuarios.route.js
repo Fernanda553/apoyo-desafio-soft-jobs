@@ -1,12 +1,12 @@
 import express from 'express'
 import * as usuarios from '../controllers/usuarios.controller.js'
+import verifyToken from '../middlewares/usuarios.middleware.js'
 
 const router = express.Router()
-// Login y registro de usuarios
+
 router.post('/usuarios', usuarios.registerUser)
 router.post('/login', usuarios.login)
 
-// Obtener usuario por token
-router.get('/usuarios', usuarios.returnUser)
+router.get('/usuarios', verifyToken, usuarios.returnUser)
 
 export default router
